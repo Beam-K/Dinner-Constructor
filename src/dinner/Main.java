@@ -1,6 +1,7 @@
 package dinner;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -53,9 +54,17 @@ public class Main {
         System.out.println("Начинаем конструировать обед...");
 
         System.out.println("Введите количество наборов, которые нужно сгенерировать:");
-        int numberOfCombos = scanner.nextInt();
-        scanner.nextLine();
+        int numberOfCombos = 0;
         
+        try {
+            numberOfCombos = scanner.nextInt();
+        }catch (InputMismatchException e){
+            System.out.println("вы ввели строку, а нужно число");
+            scanner.nextLine();
+            return;
+        }
+
+
         System.out.println("Вводите типы блюда, разделяя символом переноса строки (enter). Для завершения ввода введите пустую строку");
         String nextItem = scanner.nextLine();
 
