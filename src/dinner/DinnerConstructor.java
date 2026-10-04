@@ -41,17 +41,17 @@ public class DinnerConstructor {
     private ArrayList<String> generatedCombo(ArrayList<String> dishTypes) {
         ArrayList<String> selectedDishes = new ArrayList<>();
         for (String dishType: dishTypes) {
-            ArrayList<String> availableDishes = dinnersByType.get(dishType); //достаём из хранилища варианты блюд по типу
-            String selectedDish = getRandomDish(availableDishes); //полчим произвольное блюдо
-            selectedDishes.add(selectedDish); //добавим блюдо в подборку комбинацию
+            ArrayList<String> availableDishes = dinnersByType.get(dishType);
+            String selectedDish = getRandomDish(availableDishes);
+            selectedDishes.add(selectedDish);
         }
         return selectedDishes;
     }
 
     private String getRandomDish(ArrayList<String> availableDishes) {
-        int numberOfDishesForType = availableDishes.size(); //получаем общее количество доступных блюд этого типа
-        int dishIndex = random.nextInt(numberOfDishesForType); //генерируем случайное число от 0 до (кол-во блюд - 1), чтобы выбрать случайное блюдо
-        //выберем произвольное блюдо по индексу
+        int numberOfDishesForType = availableDishes.size();
+        int dishIndex = random.nextInt(numberOfDishesForType);
+
 
         return availableDishes.get(dishIndex);
     }

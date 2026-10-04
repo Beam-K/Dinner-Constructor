@@ -53,15 +53,19 @@ public class Main {
     private static void generateDishCombo() {
         System.out.println("Начинаем конструировать обед...");
 
-        System.out.println("Введите количество наборов, которые нужно сгенерировать:");
         int numberOfCombos = 0;
-        
-        try {
+        boolean isValidNumberOfCombos = false; //переменная-флаг для цикла
+        while (!isValidNumberOfCombos){ //сам цикл, чтобы пользователь мог много раз ошибаться, но в конечном итоге ввел
+            // данные в правильном виде
+        try { //начала конструкции, которая проверяет исключения*
+            System.out.println("Введите количество наборов, которые нужно сгенерировать:");
             numberOfCombos = scanner.nextInt();
-        }catch (InputMismatchException e){
-            System.out.println("вы ввели строку, а нужно число");
-            scanner.nextLine();
-            return;
+            scanner.nextLine();//очистка буфера
+            isValidNumberOfCombos = true;// если пользователь ввел число, то "флаг" становится true и цикл останавливается
+        }catch (InputMismatchException e){ //блок обработки исключения с типом исключения
+            System.out.println("вы ввели строку, а нужно число"); //объяснение пользователю
+            scanner.nextLine();//очистка буфера
+        }
         }
 
 
@@ -86,3 +90,6 @@ public class Main {
         }
     }
 }
+//* продолжу свой комментарий тут, чтобы не нагружать блок с кодом.
+// в ходе курса мы эту кострукцию еще не проходили, но я о ней узнала на одной из конференций и очень хотела применить на практике
+
